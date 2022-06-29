@@ -1,14 +1,30 @@
 import React from "react";
 import { Routes, Route, Link, useParams, useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
 function ProductDetail() {
   // console.log(useParams());
-
+  const dispatch = useDispatch();
   const alldetails = useLocation();
   console.log(alldetails);
   return (
     <>
       <div>
         <h1>ProductDetail</h1>
+      </div>
+      <div>
+        <Link to="/">
+          <button>Go Back</button>
+        </Link>
+        <button
+          onClick={() => {alert("Product add to Cart Succesfully");
+            dispatch({
+              type: "ADD",
+              payload: { data: { ...alldetails.state } },
+            });
+          }}
+        >
+          Add to Cart
+        </button>
       </div>
       <div>
         <div>

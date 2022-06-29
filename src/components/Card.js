@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux/es/exports";
 import { useSelector } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
 function Card(props) {
-  console.log(props.post)
+  console.log(props.post);
   const dispatch = useDispatch();
   const state = useSelector(({ reducer }) => reducer);
   console.log("This is a state from card  =====", state);
@@ -22,7 +22,12 @@ function Card(props) {
               <li key={data.id}>
                 <div className="card">
                   <div className="img">
-                    <Link to={{ pathname: `/productdetail/${data.id}` }} state={data}>
+                    <Link
+                      to={{
+                        pathname: `/productdetail/${data.id}`,
+                        state: data,
+                      }}
+                    >
                       <img
                         src={data.image}
                         alt="pic come hare"
@@ -40,6 +45,7 @@ function Card(props) {
                   <div>
                     <button
                       onClick={() => {
+                        alert("Product add to Cart Succesfully");
                         dispatch({ type: "ADD", payload: { data } });
                       }}
                     >

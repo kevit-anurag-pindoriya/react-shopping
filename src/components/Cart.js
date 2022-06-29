@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import { removeto } from "./Redux/action";
+import { removeto } from "../Redux/action";
+import { Link } from "react-router-dom";
 function Cart() {
   const state = useSelector(({ reducer }) => reducer);
   console.log("This only state ", state);
@@ -36,6 +37,14 @@ function Cart() {
             </li>
           );
         })}
+      </div>
+      <div className="link">
+       {state.length !== 0 && <Link to="/checkout">
+          <button>CheckOut</button>
+        </Link>}
+        <Link to="/">
+          <button>Continue Shopping</button>
+        </Link>
       </div>
     </div>
   );
