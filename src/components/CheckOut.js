@@ -2,10 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function CheckOut() {
-  const state = useSelector((data) => data);
-  console.log("====This data from Checkout Page =====");
-  console.log(state);
-  console.log("====This data from Checkout Page =====");
+  const state = useSelector(({ reducer }) => reducer);
+  console.log("====This data from Checkout Page =====", state);
   let total = 0;
   return (
     <div>

@@ -3,10 +3,10 @@ import { useDispatch } from "react-redux/es/exports";
 import { useSelector } from "react-redux";
 import { Routes, Route, Link } from "react-router-dom";
 function Card(props) {
-  // console.log(props.post)
+  console.log(props.post)
   const dispatch = useDispatch();
-  const state = useSelector((state) => state);
-  console.log("This is a state ===== ");
+  const state = useSelector(({ reducer }) => reducer);
+  console.log("This is a state from card  =====", state);
 
   return (
     <>

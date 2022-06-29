@@ -1,6 +1,6 @@
 const init = [];
 
-export const Reducer = (state = init, action) => {
+export const reducer = (state = init, action) => {
   switch (action.type) {
     case "ADD": {
       //   console.log(action);

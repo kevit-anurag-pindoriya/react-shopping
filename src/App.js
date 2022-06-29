@@ -46,7 +46,7 @@ function App() {
           path="/about"
           element={<div>Hello How are you im about </div>}
         ></Route>
-        <Route path="/productdetail/:type" element={<ProductDetail/>}></Route>
+        <Route path="/productdetail/:type" element={<ProductDetail />}></Route>
       </Routes>
       {loding && (
         <p>
@@ -78,7 +78,6 @@ function App() {
         <h1>This is a Checkout Page </h1>
       </div>
       <CheckOut></CheckOut>
-      {/* <ProductDetail></ProductDetail> */}
     </div>
   );
 }

@@ -1,10 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import { removeto } from "./Redux/Action";
+import { removeto } from "./Redux/action";
 function Cart() {
-  const state = useSelector((state) => state);
-  console.log(state.map((data) => data.data));
+  const state = useSelector(({ reducer }) => reducer);
+  console.log("This only state ", state);
+  console.log(
+    "this is map in cart",
+    state.map((data) => data.data)
+  );
   const dispatch = useDispatch();
   return (
     <div>
@@ -12,10 +16,10 @@ function Cart() {
         <p>
           <h1>This is a cart Page </h1>
         </p>
-        <p><h1>Total time in Cart is {state.length}</h1></p>
-        <div>
-            {state.length === 0 && <p>Empty Cart </p>}
-        </div>
+        <p>
+          <h1>Total time in Cart is {state.length}</h1>
+        </p>
+        <div>{state.length === 0 && <p>Empty Cart </p>}</div>
       </div>
       <div className="display-item">
         {state.map((data, index) => {
@@ -27,7 +31,7 @@ function Cart() {
                   dispatch(removeto(data.data.key));
                 }}
               >
-                Remove Item from Cart{" "}
+                Remove Item from Cart
               </button>
             </li>
           );
