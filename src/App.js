@@ -76,7 +76,7 @@ function App() {
           </Route>
         </Switch>
       )}
-      <footer>
+      <footer className="footer">
         <div className="footer__all">
           <div className="footer__all-media">
             <div>

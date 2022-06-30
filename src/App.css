@@ -86,6 +86,8 @@ button {
 .App__homelink:active {
   text-decoration: none;
 }
+.footer {
+}
 .footer__all {
   background-color: #0d0d0d;
   color: #fef9f8;
