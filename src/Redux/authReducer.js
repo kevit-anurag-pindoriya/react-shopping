@@ -1,12 +1,13 @@
-const init = false;
+const init = true;
 
 export const authReducer = (state = init, action) => {
+  
   switch (action.type) {
     case "login": {
-      return (state = true);
+      return true;
     }
     case "logout": {
-      return (state = false);
+      return false;
     }
     default: {
       return state;

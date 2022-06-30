@@ -1,0 +1,32 @@
+.all-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card-item {
+  width: 40%;
+  margin: 44px 22px 44px 22px;
+  padding: 30px 0px 10px 0px;
+  border-radius: 20px;
+  border-color: black;
+  background-color: rgb(248, 248, 255);
+}
+ol {
+  list-style: "";
+}
+
+.card-name {
+  background-color: rgb(240, 240, 255);
+  margin: 22px 2px 2px 2px;
+  padding: 1px 0px 1px 0px;
+  font-size: large;
+  font-weight: 500;
+}
+.card-price {
+  background-color: rgb(255, 246, 240);
+  padding: 1px 0px 1px 0px;
+  margin-top: 4px;
+  font-size: 21px;
+  font-weight: 500;
+}

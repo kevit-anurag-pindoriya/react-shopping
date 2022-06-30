@@ -1,0 +1,13 @@
+.product-image-img {
+  height: 400px;
+}
+.product-price-div {
+  display: block;
+}
+.all-info {
+  background-color: rgb(255, 246, 240);
+  padding: 1px 0px 1px 0px;
+  margin-top: 20px;
+  font-size: 21px;
+  font-weight: 500;
+}

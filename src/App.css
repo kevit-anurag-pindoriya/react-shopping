@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: white;
 }
 
 .App-logo {
@@ -35,4 +36,68 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.App__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: center;
+  background-color: #f1e9e6;
+}
+.App__button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+button {
+  background-color: #ef9273;
+  border: 14px;
+  font-size: 20px;
+  border-radius: 8px;
+  margin: 5px;
+  padding: 4px 16px 4px 16px;
+  color: white;
+}
+.App__header-title {
+  color: #ef9273;
+  font-size: 22px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: bolder;
+}
+
+.App__homelink:link {
+  text-decoration: none;
+}
+
+.App__homelink:visited {
+  text-decoration: none;
+}
+
+.App__homelink:hover {
+  text-decoration: none;
+}
+
+.App__homelink:active {
+  text-decoration: none;
+}
+.footer__all {
+  background-color: #0d0d0d;
+  color: #fef9f8;
+  font-weight: 200;
+  font-family: "Roboto", sans-serif;
+  margin-top: 100px;
+  padding: 45px 0px 45px 0px;
+}
+.footer__all-media {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
 }

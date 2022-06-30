@@ -6,7 +6,7 @@ import Card from "./Card";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-
+import Button from "../element/Button";
 function ProductFetch() {
   const [post, setPost] = useState([]);
   const [loding, setLoding] = useState(true);
@@ -57,20 +57,9 @@ function ProductFetch() {
         <option value="jewelery">jewelery</option>
         <option value="electronics">electronics</option>
       </select>
+   
       <div>
-        <Link to="/cart">
-          <button>Cart</button>
-        </Link>
-      </div>
-      <div>
-        <button
-          onClick={() => {
-            alert("You are Logout Now ");
-            dispatch({ type: "logout" });
-          }}
-        >
-          Logout..
-        </button>
+        
       </div>
       <Card post={currentPosts} select={select}></Card>
       <Pagination
@@ -80,9 +69,7 @@ function ProductFetch() {
       ></Pagination>
       {/* <Cart></Cart> */}
 
-      <div>
-        <h1>This is a Checkout Page </h1>
-      </div>
+      
       {/* <CheckOut></CheckOut> */}
     </div>
   );

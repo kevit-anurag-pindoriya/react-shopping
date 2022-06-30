@@ -4,6 +4,8 @@ import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import "./Login.css";
+import { login } from "../Redux/authAction";
+import { Button } from "@mui/material";
 
 //============================================== Main function==============================================================
 
@@ -36,7 +38,7 @@ function Login() {
     console.log("Email ref ==========", passwordref.current.value.trim());
     emailref.current.value = "";
     passwordref.current.value = "";
-    dispatch({ type: "login" });
+    dispatch(login());
     {
       <Redirect to="/"></Redirect>;
     }

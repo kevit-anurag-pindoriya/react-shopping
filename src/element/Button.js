@@ -1,9 +1,7 @@
-import React from 'react'
-
-function Button() {
-  return (
-    <div>Button</div>
-  )
+import React from "react";
+import "./Button.css";
+function Button(props) {
+  return props.childern;
 }
 
-export default Button
+export default Button;
