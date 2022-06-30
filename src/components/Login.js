@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useRef } from "react";
+import "./Login.css";
 
 //============================================== Main function==============================================================
 
@@ -48,19 +49,31 @@ function Login() {
         <Redirect to="/"></Redirect>
       ) : (
         <div>
-          <label>E-mail:-</label>
-          <input
-            type="text"
-            ref={emailref}
-            placeholder="Enter your email"
-          ></input>
-          <label>Password:-</label>
-          <input
-            type="text"
-            ref={passwordref}
-            placeholder="Enter your password "
-          ></input>
-          <button onClick={validateHandler}>Login</button>
+          <div className="login">
+            <div className="loginbox">
+              <div className="login__email-div">
+                <input
+                  className="login__email"
+                  type="text"
+                  ref={emailref}
+                  placeholder="Enter your email"
+                ></input>
+              </div>
+              <div className="login__password-div">
+                <input
+                  className="login__password"
+                  type="text"
+                  ref={passwordref}
+                  placeholder="Enter your password "
+                ></input>
+              </div>
+              <div className="login__button-div">
+                <button class="login__submit" onClick={validateHandler}>
+                  Login
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

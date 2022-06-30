@@ -4,11 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./Card";
 import Pagination from "./Pagination";
-import Cart from "./Cart";
 import { Link } from "react-router-dom";
-import CheckOut from "./CheckOut";
-import ProductDetail from "./ProductDetail";
-import Login from "./Login";
 import { useDispatch } from "react-redux";
 
 function ProductFetch() {
