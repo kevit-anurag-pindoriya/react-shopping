@@ -30,3 +30,6 @@ ol {
   font-size: 21px;
   font-weight: 500;
 }
+.card-item :hover {
+  transform: scale(1.015);
+}

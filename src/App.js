@@ -9,7 +9,10 @@ import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Button from "./element/Button";
+import { useState } from "react";
+
 function App() {
+  const [select, setSelect] = useState();
   // const auth = useSelector(({ authReducer }) => authReducer);
   const auth = useSelector((state) => state.authReducer);
   const dispatch = useDispatch();
@@ -39,6 +42,22 @@ function App() {
             </NavLink>
           </div>
           <div className="App__button-group">
+            <div className="App__dropdown">
+              <select
+                className="dropdown"
+                value={select}
+                onChange={(event) => {
+                  setSelect(event.target.value);
+                  console.log("Current Seleted is Option " + select);
+                }}
+              >
+                <option value="none">None</option>
+                <option value="men's clothing">men's clothing</option>
+                <option value="women's clothing">women's clothing</option>
+                <option value="jewelery">jewelery</option>
+                <option value="electronics">electronics</option>
+              </select>
+            </div>
             <div>
               <Link to="/cart">
                 <button>Cart</button>
@@ -60,7 +79,7 @@ function App() {
       {auth && (
         <Switch>
           <Route path="/" exact>
-            <ProductFetch />
+            <ProductFetch seleted={select} />
           </Route>
           <Route path="/login" exact>
             <Redirect to=""></Redirect>

@@ -89,7 +89,7 @@ button {
 
 .footer__all {
   background-color: #0d0d0d;
-  color: #fef9f8;
+  color: #bbbbbb;
   font-weight: 200;
   font-family: "Roboto", sans-serif;
   margin-top: 100px;
@@ -101,4 +101,29 @@ button {
   justify-content: center;
   align-items: center;
   gap: 24px;
+  color: #f4f3f3;
+}
+.App__dropdown {
+  margin-right: 10px;
+}
+.dropdown {
+  border-radius: 7px;
+  font-size: large;
+  background-color: #ef9273;
+  height: 30px;
+  color: white;
+  border-color: #ef9273;
+}
+
+.dropdown:hover {
+  background-color: #f46739;
+  color: #1c1a1a;
+}
+
+button:hover {
+  background-color: #f46739;
+  color: #1c1a1a;
+}
+.App__header-title:hover {
+  color: #f46739;
 }

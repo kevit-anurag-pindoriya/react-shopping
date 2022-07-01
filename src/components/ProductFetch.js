@@ -7,7 +7,8 @@ import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Button from "../element/Button";
-function ProductFetch() {
+function ProductFetch(props) {
+  console.log(props.seleted);
   const [post, setPost] = useState([]);
   const [loding, setLoding] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -27,11 +28,11 @@ function ProductFetch() {
 
   //========================================
 
-  const indexOfLastPost = currentPage * postPerPage;
+  // const indexOfLastPost = currentPage * postPerPage;
 
-  const indexOfFristPost = indexOfLastPost - postPerPage;
+  // const indexOfFristPost = indexOfLastPost - postPerPage;
 
-  const currentPosts = post.slice(indexOfFristPost, indexOfLastPost);
+  // const currentPosts = post.slice(indexOfFristPost, indexOfLastPost);
 
   const paginate = (number) => {
     setCurrentPage(number);
@@ -44,24 +45,9 @@ function ProductFetch() {
           <h1>Loding................</h1>
         </p>
       )}
-      <select
-        value={select}
-        onChange={(event) => {
-          setSelect(event.target.value);
-          console.log("Current Seleted is Option " + select);
-        }}
-      >
-        <option value="none">None</option>
-        <option value="men's clothing">men's clothing</option>
-        <option value="women's clothing">women's clothing</option>
-        <option value="jewelery">jewelery</option>
-        <option value="electronics">electronics</option>
-      </select>
-   
-      <div>
-        
-      </div>
-      <Card post={currentPosts} select={select}></Card>
+
+      <div></div>
+      <Card post={post} select={props.seleted}></Card>
       <Pagination
         postPerPage={postPerPage}
         totalPost={post.length}
@@ -69,7 +55,6 @@ function ProductFetch() {
       ></Pagination>
       {/* <Cart></Cart> */}
 
-      
       {/* <CheckOut></CheckOut> */}
     </div>
   );
