@@ -1,0 +1,35 @@
+.material-icons {
+  size: 20px;
+  float: right;
+}
+.display-item {
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.cart-list {
+  text-decoration: "none";
+  display: flex;
+  align-content: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin: 10px 0px 10px 0px;
+  gap: 0px;
+  font-size: 20px;
+  border: solid rgb(228, 172, 148);
+  width: 80%;
+  border-radius: 10px;
+}
+.cart-list-button {
+  float: right;
+}
+.cart-button-div {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.cart-list-img {
+  margin-top: 20px;
+  width: 100px;
+}

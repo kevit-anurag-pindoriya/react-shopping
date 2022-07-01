@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { useRef } from "react";
 import "./Login.css";
 import { login } from "../Redux/authAction";
-import { Button } from "@mui/material";
+
 
 //============================================== Main function==============================================================
 
@@ -17,22 +17,19 @@ function Login() {
   const emailref = useRef();
   const passwordref = useRef();
   const dispatch = useDispatch();
-  const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  
   //==============================================validateHandler===============================================================
 
   const validateHandler = () => {
-    if (emailref.current.value.trim() == "") {
+    if (emailref.current.value.trim() === "") {
       alert(" Email must not be Empty ");
       return;
     }
-    if (passwordref.current.value.trim() == "") {
+    if (passwordref.current.value.trim() === "") {
       alert(" password must not be Empty ");
       return;
     }
-    if (reg.test(emailref.current.value.trim())) {
-      alert(" Please Enter Valid Email ");
-      return;
-    }
+   
     alert("Login Succesfully");
     console.log("Email ref ==========", emailref.current.value.trim());
     console.log("Email ref ==========", passwordref.current.value.trim());

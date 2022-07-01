@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link, useParams, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./ProductDetail.css";
 function ProductDetail() {
@@ -35,7 +35,11 @@ function ProductDetail() {
           </p>
         </div>
         <div className="product-image-div">
-          <img className="product-image-img" src={alldetails.state.image}></img>
+          <img
+            className="product-image-img"
+            src={alldetails.state.image}
+            alt="Product comes here"
+          ></img>
         </div>
         <div className="all-info">
           <div className="product-price-div">

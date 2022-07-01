@@ -1,6 +1,6 @@
 import "./App.css";
 import Cart from "./components/Cart";
-import { Routes, Route, Link, Switch, NavLink } from "react-router-dom";
+import { Route, Link, Switch, NavLink } from "react-router-dom";
 import ProductDetail from "./components/ProductDetail";
 import Login from "./components/Login";
 import ProductFetch from "./components/ProductFetch";
@@ -8,7 +8,7 @@ import CheckOut from "./components/CheckOut";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Button from "./element/Button";
+
 import { useState } from "react";
 
 function App() {

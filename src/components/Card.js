@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux/es/exports";
 import { useSelector } from "react-redux";
-import { Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Card.css";
 function Card(props) {
   console.log(props.post);

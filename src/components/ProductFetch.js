@@ -1,58 +1,68 @@
 import React from "react";
-
+// import Loder from "../element/Loder";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Card from "./Card";
-import Pagination from "./Pagination";
-import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import Button from "../element/Button";
+import "./ProductFetch.css";
+import InfiniteScroll from "react-infinite-scroll-component";
 function ProductFetch(props) {
-  console.log(props.seleted);
-  const [post, setPost] = useState([]);
-  const [loding, setLoding] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [postPerPage, setPostPerPage] = useState(5);
-  const [select, setSelect] = useState();
-  const dispatch = useDispatch();
-  useEffect(() => {
-    axios
-      .get("https://fakestoreapi.com/products")
-      .then((res) => {
-        setPost(res.data);
-        setLoding(false);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-  // console.log(post[0]);
+  //-----------------------------------------------------------------------------------
+  //---------------------------new code -----------------------------------------------
+  const [items, setData] = useState([]);
+  const [noMore, setNoMore] = useState(true);
+  const [limit, setLimit] = useState(10);
+  //-----------------------------------------------------------------------------------
 
-  //========================================
+  //-----------------------------------------------------------------------------------------
+  //----------------------------------New code ----------------------------------------------
 
-  // const indexOfLastPost = currentPage * postPerPage;
-
-  // const indexOfFristPost = indexOfLastPost - postPerPage;
-
-  // const currentPosts = post.slice(indexOfFristPost, indexOfLastPost);
-
-  const paginate = (number) => {
-    setCurrentPage(number);
+  const fetchdata = async () => {
+    const { data } = await axios("https://fakestoreapi.com/products?limit=5");
+    setData(data);
   };
-  console.log("You seletedt ====" + select);
+
+  const fetchmoredata = async () => {
+    const { data } = await axios(
+      `https://fakestoreapi.com/products?limit=${limit}`
+    );
+    return data;
+  };
+
+  useEffect(() => {
+    fetchdata();
+  }, []);
+
+  console.log("This is data", items);
+  const fetchData = async () => {
+    const fatchmoredata = await fetchmoredata();
+    console.log(fatchmoredata);
+    setData(fatchmoredata);
+    setLimit(limit + 5);
+
+    if (fatchmoredata.length === 20) {
+      setNoMore(false);
+    }
+  };
+
+  //---------------------------------------------------------------------------------------------
+
   return (
     <div className="App">
-      {loding && (
-        <p>
-          <h1>Loding................</h1>
-        </p>
-      )}
-
       <div></div>
-      <Card post={post} select={props.seleted}></Card>
-      <Pagination
-        postPerPage={postPerPage}
-        totalPost={post.length}
-        paginate={paginate}
-      ></Pagination>
+      <InfiniteScroll
+        dataLength={items.length} //This is important field to render the next data
+        next={fetchData}
+        hasMore={noMore}
+        loader={<h1>... Loding ...</h1>}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <h2>--- That's All ---</h2>
+          </p>
+        }
+      >
+        <Card post={items} select={props.seleted}></Card>
+      </InfiniteScroll>
+
       {/* <Cart></Cart> */}
 
       {/* <CheckOut></CheckOut> */}
