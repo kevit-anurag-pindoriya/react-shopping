@@ -4,6 +4,6 @@ import thunkMiddleware from "redux-thunk";
 import { rootReducer } from "./rootreducer";
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(thunkMiddleware))
+  composeWithDevTools(applyMiddleware(thunkMiddleware),)
 );
 export default store;

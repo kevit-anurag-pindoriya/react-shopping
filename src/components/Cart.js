@@ -8,12 +8,13 @@ import { useEffect } from "react";
 import "./Cart.css";
 import { removeone } from "../Redux/action";
 import { addone } from "../Redux/action";
+import { addto } from "../Redux/action";
 function Cart() {
   let total = 0;
   const [price, setPrice] = useState(0);
   const state = useSelector(({ reducer }) => reducer);
 
-  console.log("This only state ", state);
+
   // console.log(
   //   "this is map in cart",
   //   state.map((data) => data.data)
@@ -39,7 +40,7 @@ function Cart() {
           return (
             <li className="cart-list">
               {/* {setPrice(()=>price + data.data.data.price)} */}
-              {(total += data.data.data.price)}
+              {(total += (data.data.data.price * data.data.count))}
               <div className="cart-list-img-div">
                 <img
                   className="cart-list-img"
@@ -54,12 +55,12 @@ function Cart() {
               <div className="inc">
                 <button
                   className="inc"
-                  onClick={() => {console.log(data.data.data.id);dispatch(addone(data.data.data.id))}}
+                  onClick={() => { data.data.count === 5 ? alert("No more added") : dispatch(addone(data.data.data.id)) }}
                 >
                   Increment
                 </button>
                 <p>{data.data.count}</p>
-                <button className="dec" onClick={() => {console.log(data.data.data.id);dispatch(removeone(data.data.data.id))}}>
+                <button className="dec" onClick={() => { data.data.count === 1 ? alert("No more decrement") : dispatch(removeone(data.data.data.id)) }}>
                   Decrement
                 </button>
               </div>

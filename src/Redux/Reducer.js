@@ -10,14 +10,14 @@ export const reducer = (state = init, action) => {
       let index = state
         .map((object) => object.data.data.id)
         .indexOf(obj.data.id);
-      console.log("***************Error-state**********", state);
-      console.log("This is a state of action 'ADD-state'", state);
-      console.log("This is a obj of action 'Obj'", obj);
-      console.log(
-        "state.map((object) => object.data.data.id).indexOf(obj.data.id) ",
-        state.map((object) => object.data.data.id).indexOf(obj.data.id),
-        index
-      );
+      // console.log("***************Error-state**********", state);
+      // console.log("This is a state of action 'ADD-state'", state);
+      // console.log("This is a obj of action 'Obj'", obj);
+      // console.log(
+      //   "state.map((object) => object.data.data.id).indexOf(obj.data.id) ",
+      //   state.map((object) => object.data.data.id).indexOf(obj.data.id),
+      //   index
+      // );
       console.log("this is a index ", state[0]);
       if (state.map((object) => object.data.data.id).indexOf(obj.data.id) < 0) {
         console.log(
@@ -39,7 +39,9 @@ export const reducer = (state = init, action) => {
         //   obj.count
         // );
 
-        return [(state[index] = { data: { ...obj } })];
+        // return [(state[index] = { data: { ...obj } })];
+
+        return [...state.slice(0, index), { data: { ...obj } }, ...state.slice(index + 1)]
         // return (state[
         //   state.map((object) => object.data.data.id).indexOf(obj.data.id)
         // ] = { data: { ...obj } });
@@ -51,22 +53,35 @@ export const reducer = (state = init, action) => {
       // return [...state, { data: { ...obj } }];
     }
     case "ADDONE": {
-      console.log(action.type);
-      // return state.map((e) => {
-      //   return e.data.data.id === action.payload ? e.data.count + 1 : e;
-      // });
-      return state;
+      //============================================================ADD-ONE====================================================================
+      console.log("payload recive ", action.payload);
+
+      console.log("state is ", state);
+      console.log("using map ");
+      console.log("state[index].data.data.count + 1", state[1].data.count + 1)
+      const temp = state.map(e => e.data.data.id)
+      console.log("Temp is  ", temp);
+      //==================================================================================================================================
+      // console.log([...state.slice(0, temp.findIndex(e => e === action.payload.data.data.data.id)), ...state[temp.findIndex(e => e === action.payload.data.data.data.id)].data.count += 1, ...state.slice(temp.findIndex(e => e.data.data.id === action.payload.data.data.data.id) + 1)]);
+      return state.map((e, index) => {
+        // console.log("e.data.count", e.data.count)
+        // console.log("action.payload.data.data.data.id", action.payload)
+        if (e.data.data.id === action.payload) {
+          return { data: { ...e.data, count: e.data.count + 1 } }
+        }
+        return e
+      })
+      // return state;
     }
     case "REMOVEONE": {
-      console.log(action.type);
-      // return state.map((e) => {
-      //   return e.data.data.id === action.payload
-      //     ? e.data.count == 0
-      //       ? e.data.count
-      //       : e.data.count - 1
-      //     : e;
-      // });
-      return state;
+      return state.map((e, index) => {
+        // console.log("e.data.count", e.data.count)
+        // console.log("action.payload.data.data.data.id", action.payload)
+        if (e.data.data.id === action.payload) {
+          return { data: { ...e.data, count: e.data.count - 1 } }
+        }
+        return e
+      })
     }
     case "REMOVE": {
       console.log("REMOVE click--Index is ---" + action.payload);

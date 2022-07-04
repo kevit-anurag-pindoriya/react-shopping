@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Card.css";
 function Card(props) {
-  console.log(props.post);
+
   const dispatch = useDispatch();
   const state = useSelector(({ reducer }) => reducer);
-  console.log("This is a state from card  =====", state);
+
 
   return (
     <>
@@ -37,7 +37,7 @@ function Card(props) {
                             height="150px"
                           ></img>
                         </Link>
-                        {console.log(data.price)}
+
                       </div>
                       <div className="card-name">
                         <p>{data.title}</p>
