@@ -1,0 +1,6 @@
+.li {
+  display: none;
+}
+.checkout-details {
+  min-height: calc(100vh - 37vh);
+}

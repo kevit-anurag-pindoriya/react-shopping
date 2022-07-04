@@ -1,0 +1,68 @@
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+  background-color: #fef9f8;
+}
+.loginbox {
+  display: flex;
+  height: 50%;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #fee6e1;
+  border-radius: 20px;
+}
+.login__password-div,
+.login__button-div,
+.login__email-div {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: baseline;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: -webkit-fill-available;
+}
+
+.login__email {
+  margin: 0 0 5% 0%;
+  position: relative;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: larger;
+  border-radius: 20px;
+  border-color: #fee6e1;
+}
+.login__password {
+  margin: 0 0 5% 0%;
+  position: relative;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+  font-size: larger;
+  border-radius: 20px;
+  border-color: #fee6e1;
+}
+.login__submit {
+  width: 35%;
+  height: 125%;
+  border-radius: 20px;
+  border-color: #fee6e1;
+  background-color: #ef9273;
+  color: white;
+}
+.login__submit :hover {
+  background-color: #f46739;
+  color: #1c1a1a;
+}
+
+.login__submit :hover {
+  background-color: #f16637;
+}

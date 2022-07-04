@@ -40,3 +40,6 @@
   align-content: center;
   gap: 24px;
 }
+.cart-details {
+  min-height: calc(100vh - 37vh);
+}

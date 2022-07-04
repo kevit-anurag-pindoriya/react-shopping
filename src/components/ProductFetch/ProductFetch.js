@@ -2,7 +2,7 @@ import React from "react";
 // import Loder from "../element/Loder";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Card from "./Card";
+import Card from "../Card/Card";
 import "./ProductFetch.css";
 import InfiniteScroll from "react-infinite-scroll-component";
 function ProductFetch(props) {
@@ -62,10 +62,6 @@ function ProductFetch(props) {
       >
         <Card post={items} select={props.seleted}></Card>
       </InfiniteScroll>
-
-      {/* <Cart></Cart> */}
-
-      {/* <CheckOut></CheckOut> */}
     </div>
   );
 }

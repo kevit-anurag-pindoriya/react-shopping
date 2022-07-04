@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-color: white;
+  min-height: calc(100vh - 37vh);
 }
 
 .App-logo {
@@ -127,3 +128,5 @@ button:hover {
 .App__header-title:hover {
   color: #f46739;
 }
+
+

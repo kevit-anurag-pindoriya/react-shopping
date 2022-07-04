@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "./ProductDetail.css";
 function ProductDetail() {
-  // console.log(useParams());
+  
   const dispatch = useDispatch();
   const alldetails = useLocation();
   console.log(alldetails);

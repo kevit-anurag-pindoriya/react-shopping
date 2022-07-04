@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { useRef } from "react";
 import "./Login.css";
-import { login } from "../Redux/authAction";
-
+import { login } from "../../Services/Actions/authAction";
 
 //============================================== Main function==============================================================
 
@@ -17,7 +17,7 @@ function Login() {
   const emailref = useRef();
   const passwordref = useRef();
   const dispatch = useDispatch();
-  
+  const [loginpage, setLoginpage] = useState(false);
   //==============================================validateHandler===============================================================
 
   const validateHandler = () => {
@@ -29,16 +29,14 @@ function Login() {
       alert(" password must not be Empty ");
       return;
     }
-   
+
     alert("Login Succesfully");
     console.log("Email ref ==========", emailref.current.value.trim());
     console.log("Email ref ==========", passwordref.current.value.trim());
     emailref.current.value = "";
     passwordref.current.value = "";
     dispatch(login());
-    {
-      <Redirect to="/"></Redirect>;
-    }
+    setLoginpage(true);
   };
   //==============================================(return)======================================================================
 
@@ -47,7 +45,7 @@ function Login() {
       {auth ? (
         <Redirect to="/"></Redirect>
       ) : (
-        <div>
+        <section>
           <div className="login">
             <div className="loginbox">
               <div className="login__email-div">
@@ -67,14 +65,21 @@ function Login() {
                 ></input>
               </div>
               <div className="login__button-div">
-                <button class="login__submit" onClick={validateHandler}>
+                <button className="login__submit" onClick={validateHandler}>
                   Login
+                </button>
+
+                <button className="login__submit">
+                  <Link to="/signup" className="login__link">
+                    signup
+                  </Link>
                 </button>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       )}
+      {loginpage && <Redirect to="/"></Redirect>}
     </div>
   );
 }

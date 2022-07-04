@@ -1,18 +1,16 @@
 import React from "react";
 import { useDispatch } from "react-redux/es/exports";
-import { useSelector } from "react-redux";
+
 import { Link } from "react-router-dom";
 import "./Card.css";
 function Card(props) {
-
   const dispatch = useDispatch();
-  const state = useSelector(({ reducer }) => reducer);
-
+  
 
   return (
     <>
       <ol>
-        <div className="all-card">
+        <section className="all-card">
           {props.post
             .filter((data) => {
               return !!props.select === false || props.select === "none"
@@ -24,7 +22,7 @@ function Card(props) {
                 <div className="card-item" key={data.id}>
                   <li>
                     <div className="card">
-                      <div className="img">
+                      <figure className="img">
                         <Link
                           to={{
                             pathname: `/productdetail/${data.id}`,
@@ -37,8 +35,7 @@ function Card(props) {
                             height="150px"
                           ></img>
                         </Link>
-
-                      </div>
+                      </figure>
                       <div className="card-name">
                         <p>{data.title}</p>
                       </div>
@@ -49,6 +46,7 @@ function Card(props) {
                         <button
                           onClick={() => {
                             alert("Product add to Cart Succesfully");
+
                             dispatch({ type: "ADD", payload: { data } });
                           }}
                         >
@@ -60,7 +58,7 @@ function Card(props) {
                 </div>
               );
             })}
-        </div>
+        </section>
       </ol>
     </>
   );

@@ -1,34 +1,39 @@
 import "./App.css";
-import Cart from "./components/Cart";
+import Cart from "./components/Cart/Cart";
 import { Route, Link, Switch, NavLink } from "react-router-dom";
-import ProductDetail from "./components/ProductDetail";
-import Login from "./components/Login";
-import ProductFetch from "./components/ProductFetch";
-import CheckOut from "./components/CheckOut";
+import ProductDetail from "./components/ProductDetail/ProductDetail";
+import Login from "./components/Login/Login";
+import ProductFetch from "./components/ProductFetch/ProductFetch";
+import CheckOut from "./components/CheckOut/CheckOut";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { useDispatch } from "react-redux";
-
+// import { useDispatch } from "react-redux";
+import UserProfile from "./components/UserProfile/UserProfile";
 import { useState } from "react";
+import Signup from "./components/Signup/Signup";
 
 function App() {
   const [select, setSelect] = useState();
-  // const auth = useSelector(({ authReducer }) => authReducer);
   const auth = useSelector((state) => state.authReducer);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   console.log("+++App.js run +++", auth);
   if (!auth) {
     return (
       <>
-        <Switch>
-          <Route path="*">
-            <Login />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
-        <Redirect to="/login" replace={true} />
+        <main>
+          <Switch>
+            <Route path="/login" exact>
+              <Login />
+            </Route>
+            <Route path="/signup" exact>
+              <Signup></Signup>
+            </Route>
+            <Route path="*">
+              <Login />
+            </Route>
+          </Switch>
+          <Redirect to="/login" replace={true} />
+        </main>
       </>
     );
   }
@@ -64,37 +69,37 @@ function App() {
               </Link>
             </div>
             <div>
-              <button
-                onClick={() => {
-                  alert("You are Logout Now ");
-                  dispatch({ type: "logout" });
-                }}
-              >
-                Logout..
-              </button>
+              <Link to="/user-profile">
+                <button>Account</button>
+              </Link>
             </div>
           </div>
         </nav>
       </div>
-      {auth && (
-        <Switch>
-          <Route path="/" exact>
-            <ProductFetch seleted={select} />
-          </Route>
-          <Route path="/login" exact>
-            <Redirect to=""></Redirect>
-          </Route>
-          <Route path="/cart">
-            <Cart></Cart>
-          </Route>
-          <Route path="/checkout">
-            <CheckOut></CheckOut>
-          </Route>
-          <Route path="/productdetail/:type">
-            <ProductDetail />
-          </Route>
-        </Switch>
-      )}
+      <main>
+        {auth && (
+          <Switch>
+            <Route path="/" exact>
+              <ProductFetch seleted={select} />
+            </Route>
+            <Route path="/login" exact>
+              <Redirect to=""></Redirect>
+            </Route>
+            <Route path="/cart">
+              <Cart></Cart>
+            </Route>
+            <Route path="/checkout">
+              <CheckOut></CheckOut>
+            </Route>
+            <Route path="/productdetail/:type">
+              <ProductDetail />
+            </Route>
+            <Route path="/user-profile">
+              <UserProfile />
+            </Route>
+          </Switch>
+        )}
+      </main>
       <footer className="footer">
         <div className="footer__all">
           <div className="footer__all-media">

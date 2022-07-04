@@ -1,31 +1,18 @@
 import React from "react";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { useDispatch } from "react-redux";
-import { removeto } from "../Redux/action";
+import { removeto } from "../../Services/Actions/action";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import { useEffect } from "react";
 import "./Cart.css";
-import { removeone } from "../Redux/action";
-import { addone } from "../Redux/action";
-import { addto } from "../Redux/action";
+import { removeone } from "../../Services/Actions/action";
+import { addone } from "../../Services/Actions/action";
+
 function Cart() {
-  let total = 0;
-  const [price, setPrice] = useState(0);
   const state = useSelector(({ reducer }) => reducer);
-
-
-  // console.log(
-  //   "this is map in cart",
-  //   state.map((data) => data.data)
-  // );
-  useEffect(() => {
-    setPrice(total);
-  }, [state]);
 
   const dispatch = useDispatch();
   return (
-    <div>
+    <section className="cart-details">
       <div>
         <p>
           <h1>This is a cart Page </h1>
@@ -39,15 +26,14 @@ function Cart() {
         {state.map((data, index) => {
           return (
             <li className="cart-list">
-              {/* {setPrice(()=>price + data.data.data.price)} */}
-              {(total += (data.data.data.price * data.data.count))}
-              <div className="cart-list-img-div">
+              Rs. <strong>{data.data.data.price * data.data.count}</strong>
+              <figure className="cart-list-img-div">
                 <img
                   className="cart-list-img"
                   src={data.data.data.image}
                   alt=""
                 ></img>
-              </div>
+              </figure>
               <p>{data.data.data.title}</p>
               <div>
                 <p>Count:</p>
@@ -55,12 +41,22 @@ function Cart() {
               <div className="inc">
                 <button
                   className="inc"
-                  onClick={() => { data.data.count === 5 ? alert("No more added") : dispatch(addone(data.data.data.id)) }}
+                  onClick={() => {
+                    console.log("Button click ", data.data.data.id);
+                    dispatch(addone(data.data.data.id));
+                  }}
                 >
                   Increment
                 </button>
                 <p>{data.data.count}</p>
-                <button className="dec" onClick={() => { data.data.count === 1 ? alert("No more decrement") : dispatch(removeone(data.data.data.id)) }}>
+                <button
+                  className="dec"
+                  onClick={() => {
+                    data.data.count === 1
+                      ? alert("Min Limit reach")
+                      : dispatch(removeone(data.data.data.id));
+                  }}
+                >
                   Decrement
                 </button>
               </div>
@@ -88,14 +84,14 @@ function Cart() {
       <div className="link">
         {state.length !== 0 && (
           <Link to="/checkout">
-            <button>CheckOut Pay : {price}</button>
+            <button>CheckOut Pay</button>
           </Link>
         )}
         <Link to="/">
           <button>Continue Shopping</button>
         </Link>
       </div>
-    </div>
+    </section>
   );
 }
 
